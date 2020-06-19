@@ -1,0 +1,20 @@
+{
+  "name": "pitch-finder",
+  "version": "1.0.0",
+  "description": "An app designed to connect players with open pickup games around them.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seanjmurray/pitch-finder.git"
+  },
+  "author": "Sean Murray, Sharah Shatto, Edgar Romero, Jonathon Lee",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/seanjmurray/pitch-finder/issues"
+  },
+  "homepage": "https://github.com/seanjmurray/pitch-finder#readme"
+}
