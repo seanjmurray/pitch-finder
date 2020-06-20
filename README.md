@@ -35,8 +35,6 @@ $ psql
 ```
 ```console
 $ psql -d dbname -f schema.sql
-$ psql -d dbname -f seed.sql
-
 ```
 ### Step 4:
 To start the server run the following in the terminal:
@@ -54,6 +52,8 @@ $ npm start
  - dotenv
  - superagent
  - pg
-
+ - express-sessions
+ - passport
+ - passport-auth0
 
 ## Change Log

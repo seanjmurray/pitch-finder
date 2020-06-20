@@ -10,7 +10,6 @@ const Auth0Strategy = require("passport-auth0");
 //modules
 const authRouter = require("./libs/auth");
 
-
 const app = express();
 const port = process.env.PORT || 8080;
 //express-session
@@ -36,7 +35,7 @@ const strategy = new Auth0Strategy(
 //views and rendering
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-app.use(express.static('public'));
+app.use('/public',express.static("public"));
 //session tracking
 app.use(expressSession(session));
 passport.use(strategy);
@@ -63,14 +62,13 @@ const secured = (req, res, next) => {
   req.session.returnTo = req.originalUrl;
   res.redirect("/login");
 };
-
+///////Routes//////////
 app.get('/', (req,res) => {
   res.render('home');
 })
 
 app.get('/feed', secured, (req,res,next) => {
-  const { _raw, _json, ...userProfile } = req.user;
-  res.render("secret");
+  res.render('secret');
 })
 
 app.listen(port, ()=> console.log(`Listening on ${port}`))
