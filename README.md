@@ -1,12 +1,12 @@
-# pitch-finder
+# Pitch-Finder
 
 **Author**: Sean Murray, Sarah Shatto, Edgar Romero, Jonathon Lee
 **Version**: 1.0.0
 
-## Overview
-An app designed to connect players with open pickup games around them.
+## Overview:
+An app designed to connect players with open pickup games around in their local area.
 
-## Getting Started
+## Getting Started:
 
 ### Step 1:
 Once you have cloned the repo in the command line run:
@@ -25,6 +25,7 @@ AUTH0_DOMAIN=from-auth0
 AUTH0_CLIENT_ID=from-auth0
 AUTH0_CLIENT_SECRET=from-auth0
 SECRET=express-sessions-secret
+PARKS_API_KEY=seattle-parks-API-key
 ```
 
 ### Step 3:
@@ -47,7 +48,7 @@ To start the server run the following in the terminal:
 $ npm start
 ```
 
-## Architecture
+## Architecture:
 
 
 ### Libraries Used:
@@ -60,6 +61,7 @@ $ npm start
  - passport
  - passport-auth0
 
-## Change Log
+## Change Log:
 
  - 06-19-2020 1600 App now uses OAUTH for user accounts and restricted route access.
+
