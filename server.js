@@ -9,6 +9,7 @@ const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
 //modules
 const authRouter = require('./libs/auth');
+const getHome = require('./libs/getHome');
 const getEventForm = require('./libs/createEvent');
 const postEvents = require("./libs/postEvent");
 const eventView = require('./libs/eventView');
@@ -76,11 +77,8 @@ const secured = (req, res, next) => {
 app.get('/', (req,res) => {
   res.render('home');
 })
-
-app.get('/feed', secured, (req,res,next) => {
-  res.render('secret');
-})
-
+app.route('/events')
+  .get(secured, getHome)
 app.route('/new/event')
   .get(secured,getEventForm)
   .post(secured,postEvents)
