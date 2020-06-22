@@ -32,7 +32,7 @@ router.get("/callback", (req, res, next) => {
       }
       const returnTo = req.session.returnTo;
       delete req.session.returnTo;
-      res.redirect(returnTo || "/feed");
+      res.redirect(returnTo || "/events");
     });
   })(req, res, next);
 });

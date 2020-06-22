@@ -2,7 +2,6 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 require('ejs');
-const pg = require('pg');
 const superagent = require('superagent')
 const app = express();
 app.set("views", path.join(__dirname, "views"));
