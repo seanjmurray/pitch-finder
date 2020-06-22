@@ -1,8 +1,8 @@
 
       <form action="/new/event" method="POST">
        <label>Dropdown</label>
-        <select id="location" name="location">
-          <% locArr.forEach( obj => { %>
+        <select name="location">
+          <% locArr.forEach(obj => { %>
             <option value="<%= obj.name %>"><%= obj.name %></option>
           <% }) %>
         </select>
@@ -13,7 +13,7 @@
         </select>
           <input type="time" name="time" required>
           <input type="date" name="date" required>
-          <input type="text" name="player_wanted" required>
+          <input type="number" name="player_wanted" required>
           <input type="text" name="description" required>
           <button type="submit">Create Game</button>
       </form>

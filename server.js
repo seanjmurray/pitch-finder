@@ -13,6 +13,7 @@ const getEventForm = require('./libs/createEvent');
 const postEvents = require("./libs/postEvent");
 const eventView = require('./libs/eventView');
 
+const DB = process.env.DATABASE_URL;
 const client = new pg.Client(DB);
 client.on('error', err => console.error(err));
 
@@ -42,6 +43,9 @@ const strategy = new Auth0Strategy(
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use('/public',express.static("public"));
+app.use(express.urlencoded({
+  extended: true
+}));
 //session tracking
 app.use(expressSession(session));
 passport.use(strategy);

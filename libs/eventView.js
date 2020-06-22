@@ -4,6 +4,7 @@ const path = require("path");
 require('ejs');
 const pg = require('pg');
 const app = express();
+const DB = process.env.DATABASE_URL;
 const client = new pg.Client(DB);
 client.on('error', err => console.error(err));
 client.connect()
@@ -16,7 +17,7 @@ const eventView = (req,res,next) => {
   let safe = [req.params.id];
   client.query(sql,safe)
     .then(dbData => {
-      res.render('', {event: dbData.rows[0]})
+      res.render('eventDetail', {event: dbData.rows[0]})
     })
 }
 module.exports = eventView;

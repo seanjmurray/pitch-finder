@@ -66,7 +66,7 @@ https://trello.com/b/otGtLvfT/301-project
 
 ## Wireframes
 
-![Wireframes](images-for-md/wireframes-1.pdf)
+![Wireframes](images-for-md/wireframes.pdf)
 ![]()
 ![]()
 
@@ -76,8 +76,8 @@ https://trello.com/b/otGtLvfT/301-project
 
 ## Models and relations
 
-![Domain Model](images-for-md/domainModeling.png)
+![Domain Model](images-for-md/domainModel.png)
 
-![Entity Relationship Diagram](images-for-md/entityRelationshipDiagram.png)
+![Entity Relationship Diagram](images-for-md/entityRelation.png)
 
 ![]()

@@ -26,6 +26,7 @@ const postEvents = (req,res,next) => {
     req.body.players_wanted,
     req.body.description
   ];
+  
   client.query(sql,safe)
     .then(dbData => {
       res.redirect(`/events/${dbData.rows[0].id}`)
