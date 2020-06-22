@@ -4,11 +4,17 @@ const path = require("path");
 require('ejs');
 const pg = require('pg');
 const superagent = require('superagent')
-const expressSession = require("express-session");
-const passport = require("passport");
-const Auth0Strategy = require("passport-auth0");
+const expressSession = require('express-session');
+const passport = require('passport');
+const Auth0Strategy = require('passport-auth0');
 //modules
-const authRouter = require("./libs/auth");
+const authRouter = require('./libs/auth');
+const getEventForm = require('./libs/createEvent');
+const postEvents = require("./libs/postEvent");
+const eventView = require('./libs/eventView');
+
+const client = new pg.Client(DB);
+client.on('error', err => console.error(err));
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -71,6 +77,16 @@ app.get('/feed', secured, (req,res,next) => {
   res.render('secret');
 })
 
-app.listen(port, ()=> console.log(`Listening on ${port}`))
+app.route('/new/event')
+  .get(secured,getEventForm)
+  .post(secured,postEvents)
+app.route('/events/:id')
+  .get(secured,eventView)
+
+
+  client.connect()
+    .then(() => {
+      app.listen(port, ()=> console.log(`Listening on ${port}`))
+    })
 
 
