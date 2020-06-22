@@ -17,14 +17,18 @@ $ touch .env
 ```
 ### Step 2:
 In the directory open the **.env** file and insert the following:
- - openport should be a number for an open port on your machine.
+
 ```
 PORT=<openport>
 DATABASE=db-url
+AUTH0_DOMAIN=from-auth0
+AUTH0_CLIENT_ID=from-auth0
+AUTH0_CLIENT_SECRET=from-auth0
+SECRET=express-sessions-secret
 ```
 
 ### Step 3:
-From the root directory on the command like run the following commands:
+From the root directory on the command line run the following commands:
 
 ```console
 $ psql
@@ -57,3 +61,5 @@ $ npm start
  - passport-auth0
 
 ## Change Log
+
+ - 06-19-2020 1600 App now uses OAUTH for user accounts and restricted route access.
