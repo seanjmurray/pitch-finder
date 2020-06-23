@@ -11,15 +11,19 @@ client.connect()
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use('/public',express.static("public"));
+app.use(express.urlencoded({
+  extended: true
+}));
 
-const getHome = (req,res,next) => {
-  let sql = 'SELECT * FROM games;';
-  client.query(sql)
-    .then(dbData => {
-      let today = new Date();
-      today = `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`;
-      let eventsArr = dbData.rows.filter(obj => obj.date < today ? false : true);
-      res.render('events', {eventsArr: eventsArr})
-      })
-    }
-module.exports = getHome;
+
+const rsvp = (req,res,next) => {
+  let sql = 'SELECT players_going WHERE id = $1;';
+  let safe = [req.params.id];
+  client.query(sql,safe)
+    .then(dbData =>{
+      let sql = 'UPDATE games SET players_going = $1 WHERE id = $2;';
+      let safe = [dbData.rows[0]+1 ,req.params.id]
+      res.redirect(`/events/${req.params.id}`);
+    })
+}
+module.exports = rsvp;

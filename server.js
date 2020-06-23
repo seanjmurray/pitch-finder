@@ -4,6 +4,7 @@ const path = require("path");
 require('ejs');
 const pg = require('pg');
 const superagent = require('superagent')
+const methodOverride = require('method-override');
 const expressSession = require('express-session');
 const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
@@ -13,6 +14,7 @@ const getHome = require('./libs/getHome');
 const getEventForm = require('./libs/createEvent');
 const postEvents = require("./libs/postEvent");
 const eventView = require('./libs/eventView');
+const rsvp = require('./libs/rsvp');
 
 const DB = process.env.DATABASE_URL;
 const client = new pg.Client(DB);
@@ -47,6 +49,7 @@ app.use('/public',express.static("public"));
 app.use(express.urlencoded({
   extended: true
 }));
+app.use(methodOverride('_method'))
 //session tracking
 app.use(expressSession(session));
 passport.use(strategy);
@@ -84,11 +87,11 @@ app.route('/new/event')
   .post(secured,postEvents)
 app.route('/events/:id')
   .get(secured,eventView)
+  .put(secured, rsvp)
 
-
-  client.connect()
-    .then(() => {
-      app.listen(port, ()=> console.log(`Listening on ${port}`))
-    })
+client.connect()
+  .then(() => {
+    app.listen(port, ()=> console.log(`Listening on ${port}`))
+  })
 
 
