@@ -15,6 +15,8 @@ const getEventForm = require('./libs/createEvent');
 const postEvents = require("./libs/postEvent");
 const eventView = require('./libs/eventView');
 const rsvp = require('./libs/rsvp');
+const updateEvent = require('./libs/updateEvent');
+const deleteEvent = require('./libs/deleteEvent');
 
 const DB = process.env.DATABASE_URL;
 const client = new pg.Client(DB);
@@ -82,12 +84,18 @@ app.get('/', (req,res) => {
 })
 app.route('/events')
   .get(secured, getHome)
+
 app.route('/new/event')
   .get(secured,getEventForm)
   .post(secured,postEvents)
+
 app.route('/events/:id')
   .get(secured,eventView)
   .put(secured, rsvp)
+
+app.route('/events/update/:id')
+  .put(secured, updateEvent)
+  .delete(secured, deleteEvent)
 
 client.connect()
   .then(() => {
