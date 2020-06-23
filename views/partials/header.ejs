@@ -7,6 +7,8 @@
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Viga&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
+<!-- Font Awesome -->
+<script src="https://kit.fontawesome.com/b70e821b8b.js" crossorigin="anonymous"></script>
 <!-- CSS -->
   <link rel="stylesheet" href="../../public/styles/reset.css" type="text/css">
   <link rel="stylesheet" href="../../public/styles/base.css" type="text/css">
@@ -16,8 +18,14 @@
 
 <body>
   <header>
-    <a href="/"><h1>Pitch Finder</h1></a>
-    <a href="/login">login</a>
-    <a href="/logout">logout</a>
+    <nav class="topnav" id="myTopnav">
+      <a href="/">Home</a>
+      <a href="/events">Games</a>
+      <a href="/new/events">Post a game</a>
+      <a href="/login">Login</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </nav>
   </header>
   <main>
