@@ -1,7 +1,7 @@
 # Pitch-Finder
 
 **Author**: Sean Murray, Sarah Shatto, Edgar Romero, Jonathon Lee
-**Version**: 1.0.0
+**Version**: 1.0.3
 
 ## Overview:
 An app designed to connect players with open pickup games around in their local area.
@@ -60,8 +60,10 @@ $ npm start
  - express-sessions
  - passport
  - passport-auth0
+ - method-override
 
 ## Change Log:
 
  - 06-19-2020 1600 App now uses OAUTH for user accounts and restricted route access.
-
+ - 06-22-22 1800 App has ability to create and display events to the user and store them in the DB.
+ 

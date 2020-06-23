@@ -16,20 +16,26 @@ client.on('error', err => console.error(err));
 client.connect()
 
 const postEvents = (req,res,next) => {
-  let sql = 'INSERT INTO games (user_id,location,time,date,skill_level,players_wanted,description) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING id;';
-  let safe = [
-    req.user.user_id,
-    req.body.location,
-    req.body.time,
-    req.body.date,
-    req.body.skill_level,
-    req.body.players_wanted,
-    req.body.description
-  ];
-  
+  let sql = 'SELECT id FROM locations WHERE name = $1;';
+  let safe =[req.body.location];
   client.query(sql,safe)
     .then(dbData => {
-      res.redirect(`/events/${dbData.rows[0].id}`)
+      let sql = 'INSERT INTO games (user_id,location,time,date,skill_level,players_wanted,players_going,description) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING id;';
+      let safe = [
+        req.user.user_id,
+        dbData.rows[0].id,
+        req.body.time,
+        req.body.date,
+        req.body.skill_level,
+        req.body.players_wanted,
+        0,
+        req.body.description
+      ];
+    
+      client.query(sql,safe)
+      .then(dbData => {
+        res.redirect(`/events/${dbData.rows[0].id}`)
+      })
     })
-}
+    }
 module.exports = postEvents;
