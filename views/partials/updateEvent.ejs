@@ -1,0 +1,7 @@
+<form action="/event/update/<%= event.id %>?_method=put" method="POST">
+    <input name="time" type="date">
+    <input name="date" type="time">
+    <textarea name="description" cols="30" rows="5" type="text"></textarea>
+    <input name="players_wanted" type="number">
+    <button>Update</button>
+</form>
