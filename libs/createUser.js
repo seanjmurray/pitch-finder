@@ -2,8 +2,9 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 require('ejs');
-const pg = require('pg');
+const superagent = require('superagent')
 const app = express();
+const pg = require('pg');
 const DB = process.env.DATABASE_URL;
 const client = new pg.Client(DB);
 client.on('error', err => console.error(err));
@@ -12,12 +13,17 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use('/public',express.static("public"));
 
-const eventView = (req,res,next) => {
-  let sql = 'SELECT * FROM games WHERE id=$1;';
-  let safe = [req.params.id];
-  client.query(sql,safe)
-    .then(dbData => {
-      res.render('eventDetail', {event: dbData.rows[0],request: req.user.user_id})
-    })
+const createUser = (req, res, next) => {
+  let sql = `INSERT INTO users (user_id,username,avatar) VALUES ($1,$2,$3);`;
+  let safe = [
+    req.user.user_id,
+    req.body.name,
+    req.body.avatar
+  ];
+  client.query(sql, safe)
+  .then(() => {
+    res.redirect('/events')
+  })
 }
-module.exports = eventView;
+
+module.exports = createUser;

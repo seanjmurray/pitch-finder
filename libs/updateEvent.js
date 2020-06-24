@@ -22,11 +22,13 @@ const updateEvent = (req, res, next) => {
       req.body.date,
       req.body.description,
       req.body.players_wanted,
-      req.params.id
+      req.params.id[0]
     ];
     client.query(sql, safe)
       .then(()=>{
-        res.redirect(`/events/${req.params.id}`);
+        res.redirect(`/events/${req.params.id[0]}`);
       })
 }
 module.exports = updateEvent;
+
+/////// req.params.id isn't just a number because of method override it has a bunch after the number we will have to remove from it

@@ -6,11 +6,12 @@ CREATE TABLE locations (
   lat DECIMAL(12,8),
   lon DECIMAL(12,8)
 );
+
 DROP TABLE IF EXISTS games;
 
 CREATE TABLE games (
   id SERIAL PRIMARY KEY,
-  user_id VARCHAR(40),
+  user_id INTEGER REFERENCES users(id),
   location INTEGER REFERENCES locations(id),
   time TIME,
   date DATE,
@@ -19,3 +20,20 @@ CREATE TABLE games (
   players_going SMALLINT,
   description VARCHAR(255)
 );
+
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  user_id VARCHAR(40),
+  username VARCHAR(20),
+  avatar VARCHAR(4)
+);
+
+-- DROP TABLE IF EXISTS attending;
+
+-- CREATE TABLE attending (
+--   id SERIAL PRIMARY KEY,
+--   user_id INTEGER REFERENCES users(id),
+--   game_id INTEGER REFERENCES games(id)
+-- );

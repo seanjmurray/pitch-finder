@@ -11,11 +11,20 @@
           <option value="moderate">Moderate</option>
           <option value="pro">Pro/MLS</option>
         </select>
-          <input type="time" name="time" required>
-          <input type="date" name="date" required>
-          <input type="number" name="player_wanted" required>
-          <input type="text" name="description" required>
-          <textarea name="description" cols="30" rows="5" required></textarea>
+          <label>Time
+            <input type="time" name="time" required>
+          </label>
+          <label>When
+            <input type="date" name="date" required>
+
+          </label>
+          <label>How many players do you need
+            <input type="number" name="player_wanted" required>
+
+          </label>
+          <label>Please leave a short description
+            <textarea name="description" cols="30" rows="5" required></textarea>
+          </label>
           <button type="submit">Create Game</button>
       </form>
   
