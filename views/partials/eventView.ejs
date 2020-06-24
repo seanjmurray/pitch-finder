@@ -2,7 +2,9 @@
   <h2><%= event.location %></h2>
   <h3><%= `${event.date}${event.time}` %></h3>
   <%- include('rsvp') %>
-  <%- include('updateEvent') %>
-  <%- include('deleteEvent') %>
+   <% if(event.user_id === request){ %>
+    <%- include('updateEvent') %>
+    <%- include('deleteEvent') %>
+  <% } %>
 
 </section>

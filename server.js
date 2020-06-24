@@ -17,6 +17,8 @@ const eventView = require('./libs/eventView');
 const rsvp = require('./libs/rsvp');
 const updateEvent = require('./libs/updateEvent');
 const deleteEvent = require('./libs/deleteEvent');
+const createUser = require('./libs/createUser');
+const showUser = require('./libs/showUser');
 
 const DB = process.env.DATABASE_URL;
 const client = new pg.Client(DB);
@@ -96,6 +98,14 @@ app.route('/events/:id')
 app.route('/events/update/:id')
   .put(secured, updateEvent)
   .delete(secured, deleteEvent)
+
+app.route('/users')
+  .get(secured, showUser)
+  .post(secured, createUser)
+
+app.use('*',(req,res) =>{
+  res.render('error');
+})
 
 client.connect()
   .then(() => {
