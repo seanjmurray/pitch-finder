@@ -1,14 +1,27 @@
-
+<section class="eventContainer">
+<!-- <%- include('dateSort') %> -->
      <% eventsArr.forEach(event => { %>
       <div class="eventCards">
-       <img class="eventImg"src="/public/images/photo-172ppi.jpg"
-       <h2 class="eventsLocation"><%= event.name %></h2>
-       <h2 class="eventsDate"><%= event.date %></h2>
-       <h2 class="eventsTime"><%= event.time %></h2>
-       <a href="/events/<%= event.game_id %>">View Event</a>
-      </div>
+       <img class="eventImg"src="/public/images/photo-172ppi.jpg">
+       <div class="eventCardContent">
+            <h2 class="eventName"><%= event.game_name %></h2>
+       <h2 class="eventsLocation"><i class="fas fa-map-marked-alt"></i>&nbsp;&nbsp;&nbsp;<%= event.name %></h2>
+       <h2 class="eventsDate"><i class="far fa-calendar-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;<%= event.date %></h2>
+       <% let dispTime = event.time.toString() %>
+      <% if (dispTime[0,1] < 12) { %>
+        <% dispTime = `${dispTime} am`; %>
+        <% } else if (dispTime[0,1] === 12) { %>
+          <% dispTime = `${dispTime} pm`; %>
+     <% } else { %>
+          <% dispTime = `${dispTime - 12} pm`; %>
+          <% } %>
+       <h2 class="eventsTime"><i class="far fa-clock"></i>&nbsp;&nbsp;&nbsp;&nbsp;<%= dispTime %></h2>
+       <button class="eventButton rotate135" type="submit"><a href="/events/<%= event.game_id %>">View Event</a></button>
+     </div>
+     </div>
      <% }) %>
- 
+     
+</section>
    
  
 

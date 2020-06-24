@@ -20,10 +20,11 @@ const postEvents = (req,res,next) => {
   let safe =[req.body.location];
   client.query(sql,safe)
     .then(dbData => {
-      let sql = 'INSERT INTO games (user_id,location,time,date,skill_level,players_wanted,players_going,description) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING game_id;';
+      let sql = 'INSERT INTO games (user_id,game_name,location,time,date,skill_level,players_wanted,players_going,description) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING game_id;';
       console.log(req.body);
       let safe = [
         req.user.user_id,
+        req.body.game_name,
         dbData.rows[0].id,
         req.body.time,
         req.body.date,
