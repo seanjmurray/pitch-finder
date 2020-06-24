@@ -13,10 +13,11 @@ app.set("view engine", "ejs");
 app.use('/public',express.static("public"));
 
 const eventView = (req,res,next) => {
-  let sql = 'SELECT * FROM games WHERE id=$1;';
+  let sql = 'SELECT * FROM games LEFT JOIN locations ON games.location = locations.id WHERE games.game_id=$1;';
   let safe = [req.params.id];
   client.query(sql,safe)
     .then(dbData => {
+      console.log(dbData.rows[0])
       res.render('eventDetail', {event: dbData.rows[0],request: req.user.user_id})
     })
 }

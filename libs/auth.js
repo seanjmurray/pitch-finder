@@ -1,11 +1,15 @@
-
+require('dotenv').config();
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 const util = require("util");
 const url = require("url");
 const querystring = require("querystring");
-
+const pg = require('pg');
+const DB = process.env.DATABASE_URL;
+const client = new pg.Client(DB);
+client.on('error', err => console.error(err));
+client.connect()
 require("dotenv").config();
 //login route
 router.get(
@@ -32,7 +36,16 @@ router.get("/callback", (req, res, next) => {
       }
       const returnTo = req.session.returnTo;
       delete req.session.returnTo;
-      res.redirect(returnTo || "/events");
+      let sql = 'SELECT user_id FROM users WHERE user_id = $1;';
+      let safe = [req.user.user_id];
+      client.query(sql,safe)
+        .then(dbData => {
+          if(dbData.rowCount === 0){
+            res.redirect('/users')
+          }else{
+            res.redirect(returnTo || "/events");
+          }
+        })
     });
   })(req, res, next);
 });

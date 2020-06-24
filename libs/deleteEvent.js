@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 require('ejs');
+const methodOverride = require('method-override');
 const pg = require('pg');
 const app = express();
 const DB = process.env.DATABASE_URL;
@@ -11,12 +12,13 @@ app.use('/public',express.static("public"));
 app.use(express.urlencoded({
   extended: true
 }));
+app.use(methodOverride('_method'))
 const client = new pg.Client(DB);
 client.on('error', err => console.error(err));
 client.connect()
 
 const deleteEvent = (req, res, next) => {
-  let sql = 'DELETE FROM games WHERE id = $1;';
+  let sql = 'DELETE FROM games WHERE game_id = $1;';
   let safe = [req.params.id];
   client.query(sql,safe)
     .then(() => {
