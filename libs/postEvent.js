@@ -20,7 +20,8 @@ const postEvents = (req,res,next) => {
   let safe =[req.body.location];
   client.query(sql,safe)
     .then(dbData => {
-      let sql = 'INSERT INTO games (user_id,location,time,date,skill_level,players_wanted,players_going,description) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING id;';
+      let sql = 'INSERT INTO games (user_id,location,time,date,skill_level,players_wanted,players_going,description) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING game_id;';
+      console.log(req.body);
       let safe = [
         req.user.user_id,
         dbData.rows[0].id,
@@ -34,7 +35,7 @@ const postEvents = (req,res,next) => {
     
       client.query(sql,safe)
       .then(dbData => {
-        res.redirect(`/events/${dbData.rows[0].id}`)
+        res.redirect(`/events/${dbData.rows[0].game_id}`)
       })
     })
     }

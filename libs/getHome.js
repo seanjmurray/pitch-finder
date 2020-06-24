@@ -13,13 +13,11 @@ app.set("view engine", "ejs");
 app.use('/public',express.static("public"));
 
 const getHome = (req,res,next) => {
-  let sql = 'SELECT * FROM games;';
+  let sql = 'SELECT * FROM games LEFT JOIN locations ON games.location = locations.id ORDER BY date;';
   client.query(sql)
     .then(dbData => {
-      let today = new Date();
-      today = `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`;
-      let eventsArr = dbData.rows.filter(obj => obj.date < today ? false : true);
-      res.render('events', {eventsArr: eventsArr})
+      console.log(dbData.rows)
+      res.render('events', {eventsArr: dbData.rows})
       })
     }
 module.exports = getHome;

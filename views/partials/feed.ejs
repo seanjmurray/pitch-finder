@@ -2,10 +2,10 @@
      <% eventsArr.forEach(event => { %>
       <div class="eventCards">
        <img class="eventImg"src="/public/images/photo-172ppi.jpg"
-       <h2 class="eventsLocation"><%= event.location %></h2>
+       <h2 class="eventsLocation"><%= event.name %></h2>
        <h2 class="eventsDate"><%= event.date %></h2>
        <h2 class="eventsTime"><%= event.time %></h2>
-       <a href="/events/<%= event.id %>">View Event</a>
+       <a href="/events/<%= event.game_id %>">View Event</a>
       </div>
      <% }) %>
  
