@@ -1,30 +1,33 @@
-
+<div  class="eventCreateCard">
       <form action="/new/event" method="POST">
-       <label>Dropdown</label>
+       <label>Select your field:</label>
         <select name="location">
           <% locArr.forEach(obj => { %>
             <option value="<%= obj.name %>"><%= obj.name %></option>
           <% }) %>
-        </select>
+        </select></br>
+        <label>Give your event a name:
+          <input type="text" name="game_name" required>
+        </label></br>
+        <label>Select skill level:
         <select id="skill" name="skill_level">
           <option value="rookie">Rookie</option>
           <option value="moderate">Moderate</option>
           <option value="pro">Pro/MLS</option>
         </select>
-          <label>Time
+        </label></br>
+          <label>Click the icon and select a time:
             <input type="time" name="time" required>
-          </label>
-          <label>When
+          </label></br>
+          <label>Date:
             <input type="date" name="date" required>
-
-          </label>
-          <label>How many players do you need
+          </label></br>
+          <label>How many players do you need?
             <input type="number" name="players_wanted" required>
-
-          </label>
-          <label>Please leave a short description
+          </label></br>
+          <label>Please leave a short description.
             <textarea name="description" cols="30" rows="5" required></textarea>
-          </label>
-          <button type="submit">Create Game</button>
+          </label></br>
+          <button class="eventButton rotate135"  type="submit">Create Game</button>
       </form>
-  
+    </div>

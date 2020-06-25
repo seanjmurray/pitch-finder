@@ -1,16 +1,16 @@
-<form action="/events/update/<%= event.game_id %>?_method=put" method="POST">
+<form class="eventDetailCardContent updateCard" action="/events/update/<%= event.game_id %>?_method=put" method="POST">
     <input type="hidden" name="game_id" value="<%= event.game_id %>">
     <label>Update time:
-        <input name="time" type="date">
+        <input name="time" type="time" value="<%=  event.time%>">
     </label>
     <label>Update date:
-        <input name="date" type="time">
+        <input name="date" type="date" value="<%=  event.date%>">
     </label>
     <label>Update description
         <textarea name="description" cols="30" rows="5" type="text"><%= event.description %></textarea>
     </label>
     <label>Update how many players are needed:
-        <input name="players_wanted" type="number">
+        <input name="players_wanted" type="number" value="<%=  event.players_wanted %>">
     </label>
-    <button>Update Event</button>
+    <button class="eventButton rotate135"><i class="fas fa-edit"></i> Update Event</button>
 </form>

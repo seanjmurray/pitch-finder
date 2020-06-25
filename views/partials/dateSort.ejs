@@ -1,0 +1,19 @@
+    <div class="sortBar">
+
+      <form action="/events/date" method="GET">
+        <% let dates = eventsArr.reduce((arr,val) => { %>
+          <% if(arr.includes(val.date)){ %>
+            <% return arr; %>
+            <% } else{ %>
+              <% arr.push(val.date); %>
+              <% return arr; %>
+              <% } %>
+              <% },[]) %>
+              <select name="date">
+                <% dates.forEach(day => { %>
+                  <option value="<%= day.toString() %>"><%= day %></option>
+                  <% }) %>
+                </select>
+                <button>Select this date</button>
+              </form>
+            </div>

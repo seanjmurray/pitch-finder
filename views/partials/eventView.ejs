@@ -1,10 +1,35 @@
-<section>
-  <h2><%= event.name %></h2>
-  <h3><%= `${event.date} ${event.time}` %></h3>
-  <%- include('rsvp') %>
-   <% if(event.user_id === request){ %>
-    <%- include('updateEvent') %>
-    <%- include('deleteEvent') %>
-  <% } %>
-
+<section class="eventContainer">
+  <div class="eventDetailCard eventDetailCardContent">
+    <div class="eventDetailTitle">
+      <img class="eventDetailImg"src="/public/images/photo-172ppi.jpg">
+      <h2 class="eventDetailName"><%= event.game_name %></h2>
+    </div>
+    <% let dispTime = event.time.toString() %>
+    <% if (dispTime[0,1] < 12) { %>
+      <% dispTime = `${dispTime} am`; %>
+      <% } else if (dispTime[0,1] === 12) { %>
+        <% dispTime = `${dispTime} pm`; %>
+        <% } else { %>
+          <% dispTime = `${dispTime - 12} pm`; %>
+          <% } %>
+          <h3><i class="far fa-clock"></i> &nbsp;&nbsp;&nbsp;<%= dispTime %></h3>
+          <h3><i class="far fa-calendar-alt"></i> &nbsp;&nbsp;&nbsp;&nbsp;<%= event.date %></h3>
+          <h2><i class="fas fa-map-marked-alt"></i> &nbsp;&nbsp;&nbsp;<%= event.name %></h2>
+          <div >
+            <h3><%= `${event.players_going} Going` %></h3>
+          </div>
+          <%- include('rsvp') %>
+          <h3>Park Location:</h3>
+            <img class="eventDetailMap" src="<%= apiMap %>" alt="map">
+         
+      <% if(event.user_id === request){ %>
+        <button id="popup" class="eventButton rotate135">Update Event</button>
+        <div class="hidden">
+          <div id="modal">
+          <%- include('updateEvent') %>
+          <%- include('deleteEvent') %>
+          </div>
+        </div>
+        <% } %>
+    </div>
 </section>

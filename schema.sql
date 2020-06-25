@@ -21,9 +21,10 @@ DROP TABLE IF EXISTS games;
 CREATE TABLE games (
   game_id SERIAL PRIMARY KEY,
   user_id VARCHAR(40),
+  game_name VARCHAR(40),  
   location INTEGER REFERENCES locations(id),
   time TIME,
-  date DATE,
+  date VARCHAR(20),
   skill_level VARCHAR(12),
   players_wanted SMALLINT,
   players_going SMALLINT,
