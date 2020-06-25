@@ -15,11 +15,12 @@ const getEventForm = require('./libs/createEvent');
 const postEvents = require("./libs/postEvent");
 const eventView = require('./libs/eventView');
 const rsvp = require('./libs/rsvp');
+const unrsvp = require('./libs/unrsvp');
 const updateEvent = require('./libs/updateEvent');
 const deleteEvent = require('./libs/deleteEvent');
 const createUser = require('./libs/createUser');
 const showUser = require('./libs/showUser');
-const sortDate = require('./libs/sortDate');
+
 
 const DB = process.env.DATABASE_URL;
 const client = new pg.Client(DB);
@@ -83,7 +84,7 @@ const secured = (req, res, next) => {
 };
 ///////Routes//////////
 app.get('/', (req,res) => {
-  res.render('home');
+  res.redirect('/login');
 })
 app.route('/events')
   .get(secured, getHome)
@@ -96,12 +97,12 @@ app.route('/events/:id')
   .get(secured,eventView)
   .put(secured, rsvp)
 
-app.route('/events/date')
-  .get(secured, sortDate)
-
 app.route('/events/update/:id')
   .put(secured, updateEvent)
   .delete(secured, deleteEvent)
+
+app.route('/unrsvp/:id')
+  .delete(secured, unrsvp)
 
 app.route('/users')
   .get(secured, showUser)
