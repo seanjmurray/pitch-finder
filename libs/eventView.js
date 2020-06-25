@@ -18,8 +18,13 @@ const eventView = (req,res,next) => {
   let safe = [req.params.id];
   client.query(sql,safe)
     .then(dbData => {
-      let url = `https://maps.locationiq.com/v2/staticmap?key=${process.env.MAP_API_KEY}&center=${dbData.rows[0].lat},${dbData.rows[0].lon}}&zoom=15&size=330x330`;
-      res.render('eventDetail', {event: dbData.rows[0],request: req.user.user_id, apiMap: url})
+      let sql = 'SELECT * FROM attending LEFT JOIN users ON attending.user_id = users.id WHERE attending.game_id = $1;';
+      let safe = [dbData.rows[0].game_id];
+      client.query(sql,safe)
+        .then(dbData1 => {
+          let url = `https://maps.locationiq.com/v2/staticmap?key=${process.env.MAP_API_KEY}&center=${dbData.rows[0].lat},${dbData.rows[0].lon}&zoom=15&size=330x330`;
+          res.render('eventDetail', {event: dbData.rows[0],request: req.user.user_id, apiMap: url, userArr: dbData1.rows})
+        })
         })
 }
 module.exports = eventView;

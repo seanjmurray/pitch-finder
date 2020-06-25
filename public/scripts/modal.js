@@ -1,5 +1,5 @@
 $('#popup').on('click', function(){
-  $('#modal').modal({
+  $('#mymodal').modal({
     closeClass: 'icon-remove',
     closeText: 'X'
   });

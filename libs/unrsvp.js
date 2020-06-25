@@ -17,8 +17,7 @@ app.use(express.urlencoded({
 }));
 app.use(methodOverride('_method'))
 
-
-const rsvp = (req,res,next) => {
+const unrsvp = (req,res,next) => {
   let sql = 'SELECT game_id FROM games WHERE game_id = $1;';
   let safe = [req.params.id];
   client.query(sql,safe)
@@ -27,13 +26,13 @@ const rsvp = (req,res,next) => {
       let safe = [req.user.user_id]
       client.query(sql,safe)
         .then(dbData1 => {
-          let sql = 'INSERT INTO attending (game_id,user_id) VALUES ($1,$2);';
-          let safe = [dbData.rows[0].game_id ,dbData1.rows[0].id];
+          let sql = 'DELETE FROM attending WHERE user_id = $1 AND game_id = $2;';
+          let safe = [dbData1.rows[0].id, dbData.rows[0].game_id];
           client.query(sql,safe)
             .then(()=>{
-              res.redirect(`/events/${req.params.id}`);
+              res.redirect('/events');
             })
         })
     })
 }
-module.exports = rsvp;
+module.exports = unrsvp;

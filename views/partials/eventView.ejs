@@ -16,16 +16,30 @@
           <h3><i class="far fa-calendar-alt"></i> &nbsp;&nbsp;&nbsp;&nbsp;<%= event.date %></h3>
           <h2><i class="fas fa-map-marked-alt"></i> &nbsp;&nbsp;&nbsp;<%= event.name %></h2>
           <div >
-            <h3><%= `${event.players_going} Going` %></h3>
+            <h3><%= `${userArr.length} Going` %></h3>
+            <ul>
+              <% let attending = false; %>
+              <% userArr.forEach(user => { %>
+                <% if(user.user_id === request){ %>
+                  <% attending = true %>
+                <% } %>
+                <li><%= `${user.avatar} ${user.username}` %></li>
+              <% }); %>
+            </ul>
+              
           </div>
-          <%- include('rsvp') %>
+          <% if(attending){ %>
+            <%- include('unrsvp') %> 
+          <% } else{ %>
+            <%- include('rsvp') %>
+          <% } %>
           <h3>Park Location:</h3>
             <img class="eventDetailMap" src="<%= apiMap %>" alt="map">
          
       <% if(event.user_id === request){ %>
         <button id="popup" class="eventButton rotate135">Update Event</button>
         <div class="hidden">
-          <div id="modal">
+          <div id="mymodal">
           <%- include('updateEvent') %>
           <%- include('deleteEvent') %>
           </div>

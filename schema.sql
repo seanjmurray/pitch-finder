@@ -27,15 +27,14 @@ CREATE TABLE games (
   date VARCHAR(20),
   skill_level VARCHAR(12),
   players_wanted SMALLINT,
-  players_going SMALLINT,
   description VARCHAR(255)
 );
 
 
--- DROP TABLE IF EXISTS attending;
+DROP TABLE IF EXISTS attending;
 
--- CREATE TABLE attending (
---   id SERIAL PRIMARY KEY,
---   user_id INTEGER REFERENCES users(id),
---   game_id INTEGER REFERENCES games(id)
--- );
+CREATE TABLE attending (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id),
+  game_id INTEGER REFERENCES games(game_id)
+);
