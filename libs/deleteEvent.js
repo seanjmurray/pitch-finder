@@ -22,7 +22,12 @@ const deleteEvent = (req, res, next) => {
   let safe = [req.params.id];
   client.query(sql,safe)
     .then(() => {
-      res.redirect('/events')
+      let sql = 'DELETE FROM attending WHERE game_id = $1;';
+      let safe = [req.params.id];
+      client.query(sql,safe)
+        .then(()=>{
+          res.redirect('/events')
+        })
     })
 }
 module.exports = deleteEvent;

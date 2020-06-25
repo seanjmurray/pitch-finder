@@ -25,18 +25,18 @@
                 <% if(user.user_id === request){ %>
                   <% attending = true %>
                 <% } %>
-                <li><%= `${user.avatar} ${user.username}` %></li>
+                <li class="attending"><%= `${user.avatar} ${user.username}` %></li>
               <% }); %>
             </ul>
               
           </div>
           <% if(attending){ %>
             <%- include('unrsvp') %> 
+            <h3><i class="fas fa-map-marker-alt"></i> &nbsp;&nbsp;&nbsp;&nbsp;Park Location</h3>
+              <img class="eventDetailMap" src="<%= apiMap %>" alt="map">
           <% } else{ %>
             <%- include('rsvp') %>
           <% } %>
-          <h3>Park Location:</h3>
-            <img class="eventDetailMap" src="<%= apiMap %>" alt="map">
          
       <% if(event.user_id === request){ %>
         <button id="popup" class="eventButton rotate135">Update Event</button>

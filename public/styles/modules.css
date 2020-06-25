@@ -21,7 +21,7 @@
 
 
 #headerSpacing{
-  height: 3em;
+  height: 1em;
 }
 
 #error{
@@ -41,9 +41,16 @@ header{
   background-color: #222222 !important;
 }
 .nav-bar a:hover{
-  color: #ff6600 !important;
+  background-color: #111111;
 }
-
+ .attending{
+   padding: 5px;
+   border: none;
+   height: 1.5em;
+ }
+ .attending:last-child {
+   margin-bottom: 1.5em;
+ }
 /* buttons */
 ul li{
   color: #AAAAAA;
