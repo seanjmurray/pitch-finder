@@ -15,31 +15,33 @@
           <h3><i class="far fa-clock"></i> &nbsp;&nbsp;&nbsp;<%= dispTime %></h3>
           <h3><i class="far fa-calendar-alt"></i> &nbsp;&nbsp;&nbsp;&nbsp;<%= event.date %></h3>
           <h2><i class="fas fa-map-marked-alt"></i> &nbsp;&nbsp;&nbsp;<%= event.name %></h2>
+          <h2><i class="fas fa-futbol"></i> &nbsp;&nbsp;&nbsp;&nbsp;<%= event.skill_level%></h2>
+          <p><i class="fas fa-info-circle"></i> &nbsp;&nbsp;&nbsp;&nbsp;<%= event.description %></p>
           <div >
-            <h3><%= `${userArr.length} Going` %></h3>
+            <h3><%= `${event.players_wanted - userArr.length} spots left` %></h3>
             <ul>
               <% let attending = false; %>
               <% userArr.forEach(user => { %>
                 <% if(user.user_id === request){ %>
                   <% attending = true %>
                 <% } %>
-                <li><%= `${user.avatar} ${user.username}` %></li>
+                <li class="attending"><%= `${user.avatar} ${user.username}` %></li>
               <% }); %>
             </ul>
               
           </div>
           <% if(attending){ %>
             <%- include('unrsvp') %> 
+            <h3><i class="fas fa-map-marker-alt"></i> &nbsp;&nbsp;&nbsp;&nbsp;Park Location</h3>
+              <img class="eventDetailMap" src="<%= apiMap %>" alt="map">
           <% } else{ %>
             <%- include('rsvp') %>
           <% } %>
-          <h3>Park Location:</h3>
-            <img class="eventDetailMap" src="<%= apiMap %>" alt="map">
          
       <% if(event.user_id === request){ %>
         <button id="popup" class="eventButton rotate135">Update Event</button>
         <div class="hidden">
-          <div id="mymodal">
+          <div id="modal">
           <%- include('updateEvent') %>
           <%- include('deleteEvent') %>
           </div>

@@ -15,6 +15,7 @@
           <% dispTime = `${dispTime - 12} pm`; %>
           <% } %>
        <h2 class="eventsTime"><i class="far fa-clock"></i>&nbsp;&nbsp;&nbsp;&nbsp;<%= dispTime %></h2>
+       <h2><i class="fas fa-futbol"></i>&nbsp;&nbsp;&nbsp;&nbsp;<%= event.skill_level%></h2>
      </div>
      <button class="eventButton rotate135" type="submit"><a href="/events/<%= event.game_id %>">View Event</a></button>
      </div>
