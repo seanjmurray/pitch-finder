@@ -1,3 +1,10 @@
+DROP TABLE IF EXISTS attending CASCADE;
+
+CREATE TABLE attending (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id),
+  game_id INTEGER REFERENCES games(game_id)
+);
 DROP TABLE IF EXISTS locations CASCADE;
 
 CREATE TABLE locations (
@@ -7,7 +14,7 @@ CREATE TABLE locations (
   lon DECIMAL(12,8)
 );
 
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS users CASCADE;
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
@@ -16,7 +23,7 @@ CREATE TABLE users (
   avatar VARCHAR(4)
 );
 
-DROP TABLE IF EXISTS games;
+DROP TABLE IF EXISTS games CASCADE;
 
 CREATE TABLE games (
   game_id SERIAL PRIMARY KEY,
@@ -30,11 +37,3 @@ CREATE TABLE games (
   description VARCHAR(255)
 );
 
-
-DROP TABLE IF EXISTS attending;
-
-CREATE TABLE attending (
-  id SERIAL PRIMARY KEY,
-  user_id INTEGER REFERENCES users(id),
-  game_id INTEGER REFERENCES games(game_id)
-);
