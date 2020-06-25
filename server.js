@@ -84,7 +84,7 @@ const secured = (req, res, next) => {
 };
 ///////Routes//////////
 app.get('/', (req,res) => {
-  res.redirect('/login');
+  res.render('home');
 })
 app.route('/events')
   .get(secured, getHome)
