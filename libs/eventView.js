@@ -4,6 +4,7 @@ const path = require("path");
 require('ejs');
 const pg = require('pg');
 const app = express();
+const superagent = require('superagent')
 const DB = process.env.DATABASE_URL;
 const client = new pg.Client(DB);
 client.on('error', err => console.error(err));
@@ -17,8 +18,8 @@ const eventView = (req,res,next) => {
   let safe = [req.params.id];
   client.query(sql,safe)
     .then(dbData => {
-      console.log(dbData.rows[0])
-      res.render('eventDetail', {event: dbData.rows[0],request: req.user.user_id})
-    })
+      let url = `https://maps.locationiq.com/v2/staticmap?key=${process.env.MAP_API_KEY}&center=${dbData.rows[0].lat},${dbData.rows[0].lon}}&zoom=15&size=330x330`;
+      res.render('eventDetail', {event: dbData.rows[0],request: req.user.user_id, apiMap: url})
+        })
 }
 module.exports = eventView;

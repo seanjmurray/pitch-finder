@@ -15,9 +15,9 @@ app.use('/public',express.static("public"));
 
 
 const sortDate = (req,res,next) => {
-  let sql = 'SELECT * FROM games LEFT JOIN locations ON games.location = locations.id WHERE date = $1 ORDER BY time;';
+  console.log(req.body.date)
+  let sql = 'SELECT * FROM games LEFT JOIN locations ON games.location = locations.id WHERE games.date LIKE $1 ORDER BY time;';
   let safe = [req.body.date];
-  console.log(safe)
   client.query(sql,safe)
     .then(dbData => {
       res.render('events', {eventsArr: dbData.rows})

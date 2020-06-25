@@ -1,6 +1,6 @@
 <div  class="eventCreateCard">
       <form action="/new/event" method="POST">
-       <label>Select Your Field:</label>
+       <label>Select your field:</label>
         <select name="location">
           <% locArr.forEach(obj => { %>
             <option value="<%= obj.name %>"><%= obj.name %></option>
@@ -9,14 +9,14 @@
         <label>Give your event a name:
           <input type="text" name="game_name" required>
         </label></br>
-        <label>Select Skill level:
+        <label>Select skill level:
         <select id="skill" name="skill_level">
           <option value="rookie">Rookie</option>
           <option value="moderate">Moderate</option>
           <option value="pro">Pro/MLS</option>
         </select>
         </label></br>
-          <label>Time:
+          <label>Click the icon and select a time:
             <input type="time" name="time" required>
           </label></br>
           <label>Date:

@@ -1,4 +1,4 @@
-<form action="/events/update/<%= event.game_id %>?_method=put" method="POST">
+<form class="eventDetailCardContent updateCard" action="/events/update/<%= event.game_id %>?_method=put" method="POST">
     <input type="hidden" name="game_id" value="<%= event.game_id %>">
     <label>Update time:
         <input name="time" type="time" value="<%=  event.time%>">

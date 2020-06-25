@@ -64,11 +64,10 @@ main{
   border-radius: 15px;
   line-height: 3em;
   margin: 7.5px;
-  padding: 30px;
+  padding: 15px;
   width: 100%;
 }
 .eventDetailCardContent{
-  padding: 10px;
   line-height: 3em;
 }
 .eventDetailImg{
@@ -93,7 +92,9 @@ justify-content: space-between;
 }
 
 .eventDetailMap{
-  border: 1px solid red;
+  margin: auto;
+  text-align: center;
+  border-radius: 15px;
 }
 
 .eventImg{
@@ -142,4 +143,37 @@ input, textarea, select{
   padding: 1em 0;
   margin: auto;
   text-align: center;
+}
+
+.eventDetailCardContent.updateCard button{
+  margin-top: 2em;
+}
+.sortBar{
+  width: 100%;
+}
+
+@media screen and (min-width: 760px){
+  main{
+    width: 740px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .eventCards{
+    width: 310px;
+  }
+}
+@media screen and (min-width: 1080px){
+  main{
+    width: 95vw;
+    margin:auto;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .eventCards{
+    width: 310px;
+  }
 }

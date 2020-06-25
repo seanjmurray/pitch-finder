@@ -18,10 +18,10 @@
           <div >
             <h3><%= `${event.players_going} Going` %></h3>
           </div>
-          <div class="eventDetailMap">
-            [insert Map Here]
-          </div>
           <%- include('rsvp') %>
+          <h3>Park Location:</h3>
+            <img class="eventDetailMap" src="<%= apiMap %>" alt="map">
+         
       <% if(event.user_id === request){ %>
         <button id="popup" class="eventButton rotate135">Update Event</button>
         <div class="hidden">
