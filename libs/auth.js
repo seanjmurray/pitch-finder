@@ -54,7 +54,7 @@ router.get("/callback", (req, res, next) => {
 router.get("/logout", (req, res) => {
   req.logOut();
 
-  let returnTo = req.protocol + "://" + req.hostname;
+  let returnTo = req.protocol + 's' + "://" + req.hostname;
   const port = req.connection.localPort;
 
   if (port !== undefined && port !== 80 && port !== 443) {
@@ -63,7 +63,6 @@ router.get("/logout", (req, res) => {
       `${returnTo}/` :
       `${returnTo}:${port}/`;
   }
-
   const logoutURL = new URL(
     util.format("https://%s/logout", process.env.AUTH0_DOMAIN)
   );
