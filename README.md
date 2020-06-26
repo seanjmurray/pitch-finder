@@ -2,10 +2,11 @@
 
 
 [![HitCount](http://hits.dwyl.com/seanjmurray/pitch-finder.svg)](http://hits.dwyl.com/seanjmurray/pitch-finder)
-[![Documentation Status](https://readthedocs.org/projects/ansicolortags/badge/?version=latest)](http://ansicolortags.readthedocs.io/?badge=latest)
+[![Build Status](https://travis-ci.com/seanjmurray/pitch-finder.svg?branch=master)](https://travis-ci.com/seanjmurray/pitch-finder)
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/seanjmurray/pitch-finder/blob/master/LICENSE)
 [![Known Vulnerabilities](https://snyk.io/test/github/seanjmurray/pitch-finder/badge.svg)](https://snyk.io/test/github/seanjmurray/pitch-finder)
-[![Generic badge](https://img.shields.io/badge/version-1.4.2-green.svg)](https://shields.io/)
+[![Version](https://img.shields.io/badge/version-1.4.2-brightgreen.svg)](https://github.com/seanjmurray/pitch-finder)
+[![Deployed](https://img.shields.io/badge/deployed-live-brightgreen.svg)](https://pitch-finder.herokuapp.com/)
 
 
 
