@@ -1,3 +1,4 @@
+/*jslint node: true */
 'use strict';
 require('dotenv').config();
 const express = require("express");
@@ -10,7 +11,7 @@ const pg = require('pg');
 const DB = process.env.DATABASE_URL;
 const client = new pg.Client(DB);
 client.on('error', err => console.error(err));
-client.connect()
+client.connect();
 require("dotenv").config();
 //login route
 router.get(
@@ -42,11 +43,11 @@ router.get("/callback", (req, res, next) => {
       client.query(sql, safe)
         .then(dbData => {
           if (dbData.rowCount === 0) {
-            res.redirect('/users')
+            res.redirect('/users');
           } else {
             res.redirect(returnTo || "/events");
           }
-        })
+        });
     });
   })(req, res, next);
 });
@@ -63,8 +64,8 @@ router.get("/logout", (req, res) => {
       `${returnTo}/` :
       `${returnTo}:${port}/`;
   }
-  const logoutURL = new URL(
-    util.format("https://%s/logout", process.env.AUTH0_DOMAIN)
+  const logoutURL = new URL(// jshint ignore:line
+    util.format("https://%s/logout", process.env.AUTH0_DOMAIN) 
   );
   const searchString = querystring.stringify({
     client_id: process.env.AUTH0_CLIENT_ID,

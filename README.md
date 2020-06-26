@@ -5,7 +5,7 @@
 [![Build Status](https://travis-ci.com/seanjmurray/pitch-finder.svg?branch=master)](https://travis-ci.com/seanjmurray/pitch-finder)
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/seanjmurray/pitch-finder/blob/master/LICENSE)
 [![Known Vulnerabilities](https://snyk.io/test/github/seanjmurray/pitch-finder/badge.svg)](https://snyk.io/test/github/seanjmurray/pitch-finder)
-[![Version](https://img.shields.io/badge/version-1.4.2-brightgreen.svg)](https://github.com/seanjmurray/pitch-finder)
+[![Version](https://img.shields.io/badge/version-1.5.0-brightgreen.svg)](https://github.com/seanjmurray/pitch-finder)
 [![Deployed](https://img.shields.io/badge/deployed-live-brightgreen.svg)](https://pitch-finder.herokuapp.com/)
 
 
@@ -13,7 +13,7 @@
 **Contributors**: Sean Murray, Sarah Shatto, Edgar Romero, Jonathon Lee
 
 
-**Version**: 1.4.1
+**Version**: 1.5.0
 
 
 **Live**: [Link](https://pitch-finder.herokuapp.com/)
@@ -91,4 +91,12 @@ App uses node and express to create server and handle http/s requests. OAUTH and
  - 06-19-2020 1600 App now uses OAUTH for user accounts and restricted route access.
  - 06-22-2020 1800 App has ability to create and display events to the user and store them in the DB.
  - 06-25-2020 1800 App has full functionality for the Seattle area, joining and leaving events, profiles, and creating, editing, and deleting events.
+
+ ## Notes
+
+ in auth.js line 58 the concatenation of the 's' will need to be removed in order to logout on http.
+
+ ```js
+let returnTo = req.protocol + 's' + "://" + req.hostname;
+ ```
  
