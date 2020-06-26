@@ -4,7 +4,6 @@
   "description": "An app designed to connect players with open pickup games around them.",
   "main": "server.js",
   "scripts": {
-    "test": "jshint libs/**/*.js",
     "start": "node server.js"
   },
   "repository": {
