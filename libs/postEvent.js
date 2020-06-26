@@ -1,3 +1,4 @@
+'use strict';
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
@@ -21,7 +22,6 @@ const postEvents = (req,res,next) => {
   client.query(sql,safe)
     .then(dbData => {
       let sql = 'INSERT INTO games (user_id,game_name,location,time,date,skill_level,players_wanted,description) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING game_id;';
-      console.log(req.body);
       let safe = [
         req.user.user_id,
         req.body.game_name,

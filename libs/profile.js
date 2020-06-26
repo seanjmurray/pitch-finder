@@ -14,17 +14,15 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use('/public', express.static("public"));
 
-const createUser = (req, res, next) => {
-  let sql = `INSERT INTO users (user_id,username,avatar) VALUES ($1,$2,$3);`;
-  let safe = [
-    req.user.user_id,
-    req.body.name,
-    req.body.avatar
-  ];
+
+const profile = (req, res, next) => {
+  let sql = 'SELECT * FROM games LEFT JOIN locations ON games.location = locations.id LEFT JOIN attending ON attending.game_id = games.game_id LEFT JOIN users ON users.id = attending.user_id WHERE users.user_id = $1 ORDER BY date;';
+  let safe = [req.user.user_id];
   client.query(sql, safe)
-    .then(() => {
-      res.redirect('/events')
+    .then(dbData => {
+      res.render('profile', {
+        eventsArr: dbData.rows
+      })
     })
 }
-
-module.exports = createUser;
+module.exports = profile;

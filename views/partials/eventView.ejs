@@ -1,51 +1,86 @@
-<section class="eventContainer">
-  <div class="eventDetailCard eventDetailCardContent">
-    <div class="eventDetailTitle">
-      <img class="eventDetailImg"src="/public/images/photo-172ppi.jpg">
+<div class="eventDetailCard eventDetailCardContent">
+  <div class="eventDetailTitle">
+    <% let rand = Math.floor(Math.random()*9)+1 %>
+    <img class="eventDetailImg" src="/public/images/<%= rand %>.jpg">
+    <div class="eventDetailHead">
       <h2 class="eventDetailName"><%= event.game_name %></h2>
-    </div>
-    <% let dispTime = event.time.toString() %>
-    <% if (dispTime[0,1] < 12) { %>
+      <h3><i class="far fa-calendar-alt"></i> &nbsp;&nbsp;&nbsp;&nbsp;<%= event.date %></h3>
+      <% let dispTime = event.time.toString() %>
+      <% if (dispTime[0,1] < 12) { %>
       <% dispTime = `${dispTime} am`; %>
       <% } else if (dispTime[0,1] === 12) { %>
-        <% dispTime = `${dispTime} pm`; %>
-        <% } else { %>
-          <% dispTime = `${dispTime - 12} pm`; %>
-          <% } %>
-          <h3><i class="far fa-clock"></i> &nbsp;&nbsp;&nbsp;<%= dispTime %></h3>
-          <h3><i class="far fa-calendar-alt"></i> &nbsp;&nbsp;&nbsp;&nbsp;<%= event.date %></h3>
-          <h2><i class="fas fa-map-marked-alt"></i> &nbsp;&nbsp;&nbsp;<%= event.name %></h2>
-          <h2><i class="fas fa-futbol"></i> &nbsp;&nbsp;&nbsp;&nbsp;<%= event.skill_level%></h2>
-          <p><i class="fas fa-info-circle"></i> &nbsp;&nbsp;&nbsp;&nbsp;<%= event.description %></p>
-          <div >
-            <h3><%= `${event.players_wanted - userArr.length} spots left` %></h3>
-            <ul>
-              <% let attending = false; %>
-              <% userArr.forEach(user => { %>
-                <% if(user.user_id === request){ %>
-                  <% attending = true %>
-                <% } %>
-                <li class="attending"><%= `${user.avatar} ${user.username}` %></li>
-              <% }); %>
-            </ul>
-              
-          </div>
-          <% if(attending){ %>
-            <%- include('unrsvp') %> 
-            <h3><i class="fas fa-map-marker-alt"></i> &nbsp;&nbsp;&nbsp;&nbsp;Park Location</h3>
-              <img class="eventDetailMap" src="<%= apiMap %>" alt="map">
-          <% } else{ %>
-            <%- include('rsvp') %>
-          <% } %>
-         
-      <% if(event.user_id === request){ %>
-        <button id="popup" class="eventButton rotate135">Update Event</button>
-        <div class="hidden">
-          <div id="modal">
-          <%- include('updateEvent') %>
-          <%- include('deleteEvent') %>
-          </div>
-        </div>
-        <% } %>
+      <% dispTime = `${dispTime} pm`; %>
+      <% } else { %>
+      <% dispTime = `${dispTime - 12} pm`; %>
+      <% } %>
+      <h3><i class="far fa-clock"></i> &nbsp;&nbsp;&nbsp;<%= dispTime %></h3>
+      <h2><i class="fas fa-futbol"></i> &nbsp;&nbsp;&nbsp;&nbsp;<%= event.skill_level%></h2>
+      <h2><i class="fas fa-map-marked-alt"></i> &nbsp;&nbsp;&nbsp;<%= event.name %></h2>
+      <% let spots = 0 %>
+      <% if(event.players_wanted - userArr.length > 0){ %>
+      <% spots = event.players_wanted - userArr.length %>
+      <h3><%= `${spots} spots left` %></h3>
+      <% }else{ %>
+      <% spots = 0 %>
+      <h3><%= `${spots} spots left` %></h3>
+      <h3><%= `${Math.abs(event.players_wanted - userArr.length)} subs` %></h3>
+
+      <% } %>
     </div>
-</section>
+  </div>
+  <div>
+    <div class="detailsDiv">
+      <h2 class="detailsInformation">Details: </h2>
+      <p><i class="fas fa-info-circle"></i> &nbsp;&nbsp;&nbsp;&nbsp;<%= event.description %></p>
+    </div>
+    <h2 class="detailsInformation">Attending: </h2>
+    <div class="people">
+      <% let attending = false; %>
+      <% userArr.forEach(user => { %>
+      <% if(user.user_id === request){ %>
+      <% attending = true %>
+      <% } %>
+      <h3 class="attending"><%= user.avatar %> <br> <%= user.username %></h3>
+      <% }); %>
+    </div>
+
+
+  </div>
+  <% if(attending){ %>
+  <%- include('unrsvp') %>
+  <h3><i class="fas fa-map-marker-alt"></i> &nbsp;&nbsp;&nbsp;&nbsp;Park Location</h3>
+  <img class="eventDetailMap" src="<%= apiMap %>" alt="map">
+  <% } else{ %>
+  <%- include('rsvp') %>
+  <% } %>
+
+
+  <% if(event.user_id === request){ %>
+  <br>
+  <button id="popup" class="eventButton rotate135">Update Event</button>
+  <div class="hidden">
+    <div id="modal">
+      <%- include('updateEvent') %>
+      <%- include('deleteEvent') %>
+    </div>
+  </div>
+  <% } %>
+  <div class="eventDetailHeadButtons">
+    <p class="detailsInformation"> SHARE: </p>
+    <!-- Sharingbutton Facebook -->
+    <a class="resp-sharing-button__link"
+      href="https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpitch-finder.herokuapp.com%2Fevents/<%= event.game_id %>"
+      target="_blank" rel="noopener" aria-label="Facebook">
+      <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--medium"><i
+          class="fab fa-facebook-square"></i> Facebook</div>
+    </a>
+
+    <!-- Sharingbutton Twitter -->
+    <a class="resp-sharing-button__link"
+      href="https://twitter.com/intent/tweet/?text=Come%20join%20me%20on%20<%= event.date %>%20at%20<%= event.name %>%20to%20play!&amp;url=https%3A%2F%2Fpitch-finder.herokuapp.com%2Fevents/<%= event.game_id %>"
+      target="_blank" rel="noopener" aria-label="Twitter">
+      <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--medium"><i
+          class="fab fa-twitter-square"></i> Twitter</div>
+    </a>
+  </div>
+</div>
