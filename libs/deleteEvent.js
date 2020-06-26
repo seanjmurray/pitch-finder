@@ -1,3 +1,4 @@
+/*jslint node: true */
 'use strict';
 require("dotenv").config();
 const express = require("express");
@@ -13,10 +14,10 @@ app.use('/public', express.static("public"));
 app.use(express.urlencoded({
   extended: true
 }));
-app.use(methodOverride('_method'))
+app.use(methodOverride('_method'));
 const client = new pg.Client(DB);
 client.on('error', err => console.error(err));
-client.connect()
+client.connect();
 
 const deleteEvent = (req, res, next) => {
   let sql = 'DELETE FROM games WHERE game_id = $1;';
@@ -27,8 +28,8 @@ const deleteEvent = (req, res, next) => {
       let safe = [req.params.id];
       client.query(sql, safe)
         .then(() => {
-          res.redirect('/events')
-        })
-    })
-}
+          res.redirect('/events');
+        });
+    });
+};
 module.exports = deleteEvent;

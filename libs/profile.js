@@ -1,15 +1,15 @@
+/*jslint node: true */
 'use strict';
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
 require('ejs');
-const superagent = require('superagent')
 const app = express();
 const pg = require('pg');
 const DB = process.env.DATABASE_URL;
 const client = new pg.Client(DB);
 client.on('error', err => console.error(err));
-client.connect()
+client.connect();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use('/public', express.static("public"));
@@ -22,7 +22,7 @@ const profile = (req, res, next) => {
     .then(dbData => {
       res.render('profile', {
         eventsArr: dbData.rows
-      })
-    })
-}
+      });
+    });
+};
 module.exports = profile;

@@ -1,3 +1,4 @@
+/*jslint node: true */
 'use strict';
 require("dotenv").config();
 const express = require("express");
@@ -14,10 +15,10 @@ app.use(express.urlencoded({
 }));
 const client = new pg.Client(DB);
 client.on('error', err => console.error(err));
-client.connect()
+client.connect();
 
 const showUser = (req, res, next) => {
-  res.render('userPage')
-}
+  res.render('userPage');
+};
 
 module.exports = showUser;

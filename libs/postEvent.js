@@ -1,3 +1,4 @@
+/*jslint node: true */
 'use strict';
 require("dotenv").config();
 const express = require("express");
@@ -14,7 +15,7 @@ app.use(express.urlencoded({
 }));
 const client = new pg.Client(DB);
 client.on('error', err => console.error(err));
-client.connect()
+client.connect();
 
 const postEvents = (req,res,next) => {
   let sql = 'SELECT id FROM locations WHERE name = $1;';
@@ -35,8 +36,8 @@ const postEvents = (req,res,next) => {
     
       client.query(sql,safe)
       .then(dbData => {
-        res.redirect(`/events/${dbData.rows[0].game_id}`)
-      })
-    })
-    }
+        res.redirect(`/events/${dbData.rows[0].game_id}`);
+      });
+    });
+    };
 module.exports = postEvents;
