@@ -72,7 +72,7 @@ https://trello.com/b/otGtLvfT/301-project
 
 ![]()
 
-![]()
+
 
 ## Models and relations
 

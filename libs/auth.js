@@ -1,3 +1,4 @@
+'use strict';
 require('dotenv').config();
 const express = require("express");
 const router = express.Router();
@@ -38,11 +39,11 @@ router.get("/callback", (req, res, next) => {
       delete req.session.returnTo;
       let sql = 'SELECT user_id FROM users WHERE user_id = $1;';
       let safe = [req.user.user_id];
-      client.query(sql,safe)
+      client.query(sql, safe)
         .then(dbData => {
-          if(dbData.rowCount === 0){
+          if (dbData.rowCount === 0) {
             res.redirect('/users')
-          }else{
+          } else {
             res.redirect(returnTo || "/events");
           }
         })
@@ -58,9 +59,9 @@ router.get("/logout", (req, res) => {
 
   if (port !== undefined && port !== 80 && port !== 443) {
     returnTo =
-      process.env.NODE_ENV === "production"
-        ? `${returnTo}/`
-        : `${returnTo}:${port}/`;
+      process.env.NODE_ENV === "production" ?
+      `${returnTo}/` :
+      `${returnTo}:${port}/`;
   }
 
   const logoutURL = new URL(

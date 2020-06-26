@@ -1,3 +1,4 @@
+'use strict';
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
@@ -20,6 +21,7 @@ const updateEvent = require('./libs/updateEvent');
 const deleteEvent = require('./libs/deleteEvent');
 const createUser = require('./libs/createUser');
 const showUser = require('./libs/showUser');
+const profile = require('./libs/profile');
 
 
 const DB = process.env.DATABASE_URL;
@@ -107,6 +109,9 @@ app.route('/unrsvp/:id')
 app.route('/users')
   .get(secured, showUser)
   .post(secured, createUser)
+
+app.route('/profile')
+  .get(secured,profile)
 
 app.use('*',(req,res) =>{
   res.render('error');

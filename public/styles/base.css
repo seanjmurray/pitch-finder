@@ -1,226 +1,42 @@
-a{
+a {
   text-decoration: none;
   color: white;
 }
-body{
+
+body {
   background-color: #111111;
   color: #fff;
   font-family: 'Montserrat', sans-serif;
 }
-body::-webkit-scrollbar {
+
+body:-webkit-scrollbar {
   display: none;
 }
-body {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
 
-header{
+header {
   width: 100%;
 }
 
-nav a{
-  display: inline-block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 17px 35px;
-  text-decoration: none;
-  font-size: 17px;
-}
-.nav-bar{
-  display: flex;
-  justify-content: space-evenly;
-}
-.nav-item, .log-out{
-  padding-top: 28px;
-}
-
-.eventButton{
-  border-radius: 7.5px;
-  border: none;
-  color: white;
-  font-size: 1.25em;
-  /* font-weight:bold; */
-  background: linear-gradient(45deg,#17EAD9, #146CF6);
-  text-align:center;
-  width:100%;
-  margin-top:10px;
-  Padding: 5px;
-  transition: all .5s;
-  filter: hue-rotate(0deg);
-}
-
-.eventButton:hover{
-  text-shadow: 0px 0px 0px rgba(255, 255, 255, .75);
-}
-
-.rotate135:hover{
-  filter:hue-rotate(180deg);
-}
-
-main{
+main {
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
   width: 375px;
   margin: auto;
 }
 
-.eventCardContent{
-  padding: 10px;
-  line-height: 1.5em;
-}
-
-.eventCards{
-  /* background-color: #222222; */
-  background-image: linear-gradient(#333333, #222222);
-  border-radius: 15px;
-  margin: 7.5px;
-  padding: 20px;
-  width: 95%;
-}
-
-
-.eventContainer{
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.eventDetailCard{
-  background-image: linear-gradient(#333333, #222222);
-  border-radius: 15px;
-  line-height: 3em;
-  margin: 7.5px;
-  padding: 15px;
-  width: 100%;
-}
-.eventDetailCardContent{
-  line-height: 3em;
-}
-.eventDetailImg{
-  width:50%;
-  border-radius: 10px;
-}
-
-.eventDetailName{
-  font-weight: 600;
-  font-size: 1.5em;
-  display: inline-block;
-  margin-left: 20px; 
-}
-.eventDetailTitle{
-display: flex;
-align-items: center;
-justify-content: space-between;
-}
-
-.eventDetailTitle h2{
-  margin: auto;
-}
-
-.eventDetailMap{
-  margin: auto;
-  text-align: center;
-  border-radius: 15px;
-  filter: invert(1);
-}
-
-.eventImg{
-  width:100%;
-  border-radius: 10px;
-}
-
-.eventName{
-  font-weight: 600;
-  font-size: 1.5em;
-  margin-bottom: 10px;
-}
-
-
-/* eventFrom.ejs */
-
-.eventCreateCard{
-  background-image: linear-gradient(#333333, #222222);
-  border-radius: 15px;
-  line-height: 1.5em;
-  padding: 30px;
-  margin: 2em 0;
-}
-
-
-.createEventButton{
-  border-radius: 7.5px;
-  border: none;
-  color: white;
-  font-size: 1.25em;
-  /* font-weight:bold; */
-  background: linear-gradient(45deg,#17EAD9, #146CF6);
-  text-align:center;
-  width:100%;
-  margin-top:10px;
-  Padding: 5px;
-  transition: all .5s;
-  filter: hue-rotate(0deg);
-}
-input, textarea, select{
-  font-family: 'Montserrat';
-  width: 100%;
-  background-color: #222222;
-  color: #fff;
-  border: none;
-  padding: 1em 0;
-  margin: auto;
-  text-align: center;
-}
-
-.eventDetailCardContent.updateCard button{
-  margin-top: 2em;
-}
-.sortBar{
-  width: 100%;
-}
-
-@media screen and (min-width: 760px){
-  main{
+@media screen and (min-width: 760px) {
+  main {
     width: 740px;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-between;
   }
-  .eventButton{
-    width: 30%;
-  }
-
-  .eventCards{
-    width: 95%;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  .eventCardContent{
-    width: 30%;
-    padding:0px;
-    line-height: 2em;
-  }
-  .eventImg{
-    width: 30%;
-  }
-
 }
 
-@media screen and (min-width: 1080px){
-  main{
+@media screen and (min-width: 1080px) {
+  main {
     width: 95vw;
-    margin:auto;
+    margin: auto;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-between;
   }
-  /* .eventCards{
-    width: 310px;
-  } */
 }

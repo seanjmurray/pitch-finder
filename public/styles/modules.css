@@ -1,10 +1,11 @@
-
-.hidden{
+.hidden {
   display: none;
 }
-.modal{
+
+.modal {
   background-color: #333333;
 }
+
 .modal a.close-modal[class*="icon-"] {
   top: -10px;
   right: -10px;
@@ -20,54 +21,72 @@
 }
 
 
-#headerSpacing{
+#headerSpacing {
   height: 1em;
 }
 
-#error{
-  background-image: url('https://media.giphy.com/media/a57Xed7DfAkDe/source.gif');
+#error {
+  background-image: url('https://media.giphy.com/media/KPDqZS0ubykfK/source.gif');
   background-repeat: no-repeat;
-  height: 90vh;
-  width: 90vw;
+  height: 500px;
+  width: 500px;
+  margin: auto;
 }
-footer{
+
+footer {
   background-color: #222222;
   color: #555555;
   text-align: center;
-  height: 6em;
-  line-height: 6em;
+  height: 10vh;
+  line-height: 10vh;
+  top: 90vh;
+  margin-top: 2em;
 }
-header{
+
+
+header {
   background-color: #222222 !important;
 }
-.nav-bar a:hover{
+
+.nav-bar a:hover {
   background-color: #111111;
 }
- .attending{
-   padding: 5px;
-   border: none;
-   height: 1.5em;
- }
- .attending:last-child {
-   margin-bottom: 1.5em;
- }
+
+.people {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-wrap: wrap;
+  margin-bottom: 1.5em;
+}
+
+.attending {
+  text-align: center;
+  padding: 1em;
+  border: 1px;
+  margin: 2px;
+  background-color: #333333;
+  border-radius: 8px;
+  line-height: 1.5em;
+}
+
 /* buttons */
-ul li{
+ul li {
   color: #AAAAAA;
   display: block;
   position: relative;
   float: left;
   width: 100%;
   height: 100px;
-	border-bottom: 1px solid #333;
+  border-bottom: 1px solid #333;
 }
 
-ul li input[type=radio]{
+ul li input[type=radio] {
   position: absolute;
   visibility: hidden;
 }
 
-ul li label{
+ul li label {
   display: block;
   position: relative;
   font-weight: 300;
@@ -79,11 +98,11 @@ ul li label{
   -webkit-transition: all 0.25s linear;
 }
 
-ul li:hover label{
-	color: #FFFFFF;
+ul li:hover label {
+  color: #FFFFFF;
 }
 
-ul li .check{
+ul li .check {
   display: block;
   position: absolute;
   border: 5px solid #AAAAAA;
@@ -92,9 +111,9 @@ ul li .check{
   width: 25px;
   top: 30px;
   left: 20px;
-	z-index: 5;
-	transition: border .25s linear;
-	-webkit-transition: border .25s linear;
+  z-index: 5;
+  transition: border .25s linear;
+  -webkit-transition: border .25s linear;
 }
 
 ul li:hover .check {
@@ -104,25 +123,414 @@ ul li:hover .check {
 ul li .check::before {
   display: block;
   position: absolute;
-	content: '';
+  content: '';
   border-radius: 100%;
   height: 15px;
   width: 15px;
   top: 5px;
-	left: 5px;
+  left: 5px;
   margin: auto;
-	transition: background 0.25s linear;
-	-webkit-transition: background 0.25s linear;
+  transition: background 0.25s linear;
+  -webkit-transition: background 0.25s linear;
 }
 
-input[type=radio]:checked ~ .check {
+input[type=radio]:checked~.check {
   border: 5px solid #0DFF92;
 }
 
-input[type=radio]:checked ~ .check::before{
+input[type=radio]:checked~.check::before {
   background: #0DFF92;
 }
 
-input[type=radio]:checked ~ label{
+input[type=radio]:checked~label {
   color: #0DFF92;
+}
+
+.resp-sharing-button__link,
+.resp-sharing-button__icon {
+  display: inline-block
+}
+
+.resp-sharing-button__link {
+  text-decoration: none;
+  color: #fff;
+  margin: 0.5em;
+  text-align: center;
+}
+
+.resp-sharing-button {
+  border-radius: 5px;
+  transition: 25ms ease-out;
+  padding: 0.25em 0.5em;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif
+}
+
+.resp-sharing-button--facebook {
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+
+.resp-sharing-button--facebook:hover,
+.resp-sharing-button--facebook:active {
+  background-color: #2d4373;
+  border-color: #2d4373;
+}
+
+.resp-sharing-button--twitter {
+  background-color: #55acee;
+  border-color: #55acee;
+}
+
+.resp-sharing-button--twitter:hover,
+.resp-sharing-button--twitter:active {
+  background-color: #2795e9;
+  border-color: #2795e9;
+}
+
+.detailsDiv {
+  padding-bottom: 2em;
+}
+
+.detailsInformation {
+  font-weight: 600;
+  font-size: 1.5em;
+  display: block;
+}
+
+nav a {
+  display: inline-block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 17px 35px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.nav-item,
+.log-out {
+  padding-top: 28px;
+}
+
+.eventButton {
+  border-radius: 7.5px;
+  border: none;
+  color: white;
+  font-size: 1.25em;
+  /* font-weight:bold; */
+  background: linear-gradient(45deg, #17EAD9, #146CF6);
+  text-align: center;
+  width: 100%;
+  margin-top: 10px;
+  Padding: 5px;
+  transition: all .5s;
+  filter: hue-rotate(0deg);
+}
+
+.eventButton:hover {
+  text-shadow: 0px 0px 0px rgba(255, 255, 255, .75);
+}
+
+.eventSplashButton {
+  border-radius: 7.5px;
+  border: none;
+  color: white;
+  font-size: 1.25em;
+  font-weight: bold;
+  background: linear-gradient(45deg, #17EAD9, #146CF6);
+  text-align: center;
+  width: 500px;
+  margin-top: 10px;
+  Padding: 5px;
+  transition: all .5s;
+  filter: hue-rotate(0deg);
+}
+
+.splash {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.splash-page {
+  height: 90vh;
+  text-align: center;
+
+}
+
+.splash-logo {
+  margin-top: 100px;
+  display: inline-block;
+  padding: auto;
+  width: 75vw;
+}
+
+.splash-text {
+  margin: 50px;
+}
+
+
+
+.rotate135:hover {
+  filter: hue-rotate(180deg);
+}
+
+
+.eventCardContent {
+  padding: 10px;
+  line-height: 1.5em;
+}
+
+.eventCards {
+  /* background-color: #222222; */
+  background-image: linear-gradient(#333333, #222222);
+  border-radius: 15px;
+  margin: 7.5px;
+  padding: 20px;
+  width: 95%;
+}
+
+
+.eventContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.eventDetailCard {
+  background-image: linear-gradient(#333333, #222222);
+  border-radius: 15px;
+  line-height: 3em;
+  margin: 7.5px;
+  padding: 15px;
+  width: 100%;
+}
+
+.eventDetailCardContent {
+  line-height: 3em;
+}
+
+.eventDetailHead {
+  width: 50%;
+  line-height: 1.75em;
+  padding-top: 1em;
+  padding-bottom: 2em;
+}
+
+.eventDetailHeadButtons {
+  padding-bottom: 3em;
+  line-height: 1.75em;
+}
+
+.eventDetailImg {
+  width: 330px;
+  border-radius: 10px;
+}
+
+.eventDetailName {
+  font-weight: 600;
+  font-size: 1.5em;
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.eventDetailTitle {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* padding-left: 10px; */
+}
+
+.eventDetailTitle h2 {
+  margin: auto;
+}
+
+.eventDetailMap {
+  margin: auto;
+  text-align: center;
+  border-radius: 15px;
+  filter: invert(1);
+}
+
+.eventImg {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.eventName {
+  font-weight: 600;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+
+/* eventFrom.ejs */
+
+
+
+.eventName {
+  font-weight: 600;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+
+/* eventFrom.ejs */
+
+
+
+.eventName {
+  font-weight: 600;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+
+/* eventFrom.ejs */
+
+.eventCreateCard {}
+
+.eventName {
+  font-weight: 600;
+  font-size: 1.5em;
+   text-align: center;
+  margin-bottom: 10px;
+}
+
+
+/* eventFrom.ejs */
+
+.eventCreateCard {
+  background-image: linear-gradient(#333333, #222222);
+  border-radius: 15px;
+  line-height: 1.5em;
+  padding: 30px;
+  margin: 2em 0;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+
+/* eventFrom.ejs */
+
+.eventCreateCard {
+  background-image: linear-gradient(#333333, #222222);
+  border-radius: 15px;
+  line-height: 1.5em;
+  padding: 30px;
+  margin: 2em 0;
+}
+
+
+.createEventButton {
+  border-radius: 7.5px;
+  border: none;
+  color: white;
+  font-size: 1.25em;
+  /* font-weight:bold; */
+  background: linear-gradient(45deg, #17EAD9, #146CF6);
+  text-align: center;
+  width: 100%;
+  margin-top: 10px;
+  Padding: 5px;
+  transition: all .5s;
+  filter: hue-rotate(0deg);
+}
+
+input,
+textarea,
+select {
+  font-family: 'Montserrat';
+  width: 100%;
+  background-color: #222222;
+  color: #fff;
+  border: none;
+  padding: 1em 0;
+  margin: auto;
+  text-align: center;
+}
+
+.eventDetailCardContent.updateCard button {
+  margin-top: 2em;
+}
+
+.sortBar {
+  width: 100%;
+}
+
+.shareButton {
+  height: 20px;
+}
+
+@media screen and (min-width: 760px) {
+
+  .eventButton {
+    width: 30%;
+  }
+
+  .eventDetailCard {
+    width: 700px;
+    margin: auto
+  }
+
+  .eventCards {
+    width: 95%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .eventCardContent {
+    width: 30%;
+    padding: 0px;
+    line-height: 2em;
+  }
+
+  .eventImg {
+    width: 30%;
+  }
+
+  .eventCreateCard {
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 1080px) {
+  .eventDetailCard {
+    width: 800px;
+    margin: auto
+  }
+
+  .detailsDiv {
+    margin-top: 2em;
+  }
+
+  .eventDetailHead {
+    width: 30%;
+  }
+
+  .eventDetailTitle {
+    margin-top: 1em;
+    align-items: flex-start;
+  }
+
+  .eventDetailHeadButtons {
+    width: 30%;
+  }
+
+  .eventDetailImg {
+    width: 50%;
+  }
+
+  .eventImg {
+    width: 30%;
+  }
+
 }
