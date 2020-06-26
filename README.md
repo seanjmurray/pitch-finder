@@ -13,7 +13,7 @@
 **Contributors**: Sean Murray, Sarah Shatto, Edgar Romero, Jonathon Lee
 
 
-**Version**: 1.4.1
+**Version**: 1.4.2
 
 
 **Live**: [Link](https://pitch-finder.herokuapp.com/)
